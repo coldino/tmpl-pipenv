@@ -1,0 +1,28 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+yapf = "~=0.29.0"
+isort = {extras = ["pipfile"],version = "~=4.3.21"}
+rope = "~=0.14"
+pytest = "~=5.3.5"
+pytest-cov = "*"
+pytest-mock = "*"
+pylint = "~=2.4.3"
+mypy = "~=0.761"
+
+[packages]
+
+[requires]
+python_version = "3.7"
+
+[scripts]
+it = "python -m src"
+tests = "pytest --cov=. --cov-report=xml --no-cov-on-fail -m 'not long_running'"
+tests-long = "pytest --cov=. --cov-report=xml --no-cov-on-fail"
+tests-nocov = "pytest -m 'not long_running'"
+tests-long-nocov = "pytest"
+mypy = "mypy src tests"
+pylint = "pylint src tests"
